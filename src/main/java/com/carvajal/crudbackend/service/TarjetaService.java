@@ -2,7 +2,7 @@ package com.carvajal.crudbackend.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 import java.util.function.Function;
 
 import javax.transaction.Transactional;
@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
 
+
 import com.carvajal.crudbackend.model.Tarjeta;
 import com.carvajal.crudbackend.respository.TarjetaRepository;
 
@@ -23,7 +24,8 @@ public class TarjetaService implements TarjetaRepository {
 
 	
 	@Autowired
-private TarjetaRepository tarjetaRepository;
+	private TarjetaRepository tarjetaRepository;
+	
 
 	@Override
 	@Transactional
@@ -33,8 +35,9 @@ private TarjetaRepository tarjetaRepository;
 	}
 	
 //	Encuentra tarjetas de clientes
+	
 	public List<Tarjeta> findAllByCliente(Long numero){
-		List<Tarjeta> tarjetaRespuesta= new ArrayList();
+		try { List<Tarjeta> tarjetaRespuesta= new ArrayList();
 		List<Tarjeta> tarjeta=tarjetaRepository.findAll();
 		for (int i=0; i<tarjeta.size();i++) {
 			if(tarjeta.get(i).getCliente().getId()==numero) {
@@ -42,9 +45,10 @@ private TarjetaRepository tarjetaRepository;
 			}
 			}
 		return tarjetaRespuesta;
+	} catch (Exception e) {
+		return null;
+		}
 	}
-	
-	
 	
 	@Override
 	public List<Tarjeta> findAll(Sort sort) {
@@ -52,12 +56,6 @@ private TarjetaRepository tarjetaRepository;
 		return null;
 	}
 
-	@Override
-	@Transactional
-	public List<Tarjeta> findAllById(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
-		return tarjetaRepository.findAllById(ids);
-	}
 
 	@Override
 	public <S extends Tarjeta> List<S> saveAll(Iterable<S> entities) {
@@ -108,12 +106,6 @@ private TarjetaRepository tarjetaRepository;
 	}
 
 	@Override
-	public Tarjeta getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public <S extends Tarjeta> List<S> findAll(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
@@ -140,9 +132,16 @@ private TarjetaRepository tarjetaRepository;
 	@Override
 	public Optional<Tarjeta> findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return tarjetaRepository.findById(id);
 	}
 
+//	@Override
+//	@Transactional
+//	public Tarjeta findById(Long id) {
+//		return tarjetaRepository.findById(id).orElse(null);
+//	}
+	
+	
 	@Override
 	public boolean existsById(Long id) {
 		// TODO Auto-generated method stub
@@ -158,7 +157,7 @@ private TarjetaRepository tarjetaRepository;
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		
+		tarjetaRepository.deleteById(id);
 	}
 
 	@Override
@@ -213,6 +212,24 @@ private TarjetaRepository tarjetaRepository;
 
 	@Override
 	public <S extends Tarjeta, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public List<Tarjeta> findAllById(Iterable<Long> ids) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+	@Override
+	public Tarjeta getById(Long id) {
+		// TODO Auto-generated method stub
+		return tarjetaRepository.getById(id);
+	}
+
+	@Override
+	public List<Tarjeta> findAllById(Iterable<Long> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}

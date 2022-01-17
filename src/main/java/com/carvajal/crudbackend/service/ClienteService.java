@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
 
+import com.carvajal.crudbackend.model.Admin;
 import com.carvajal.crudbackend.model.Cliente;
 import com.carvajal.crudbackend.model.Tarjeta;
 import com.carvajal.crudbackend.respository.ClienteRepository;
@@ -34,12 +35,31 @@ public class ClienteService implements ClienteRepository{
 		// TODO Auto-generated method stub
 		return null;
 	}
+//	public List<Cliente> findAllByTarjeta(Long id){
+//		List<Cliente> clienteRespuesta= new ArrayList();
+//		List<Cliente> cliente=clienteRepository.findAll();
+//		for (int i=0; i<cliente.size();i++) {
+//			if(cliente.get(i).getTarjeta().getId()==id) {
+//				clienteRespuesta.add(cliente.get(i));
+//			}
+//			}
+//		return clienteRespuesta;
+//	}
 
-	@Override
-	public List<Cliente> findAllById(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	public List<Cliente> findAllById(Long id) {
+		List<Cliente> clienteData= new ArrayList();
+		List<Cliente> cliente=clienteRepository.findAll();
+		for (int i=0; i<cliente.size();i++) {
+			if(cliente.get(i).getId()==id) {
+				clienteData.add(cliente.get(i));	
+				} return clienteData;
+				} 
+					return null;
+	
+				}
+	
+
 
 	@Override
 	public <S extends Cliente> List<S> saveAll(Iterable<S> entities) {
@@ -92,7 +112,7 @@ public class ClienteService implements ClienteRepository{
 	@Override
 	public Cliente getById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return clienteRepository.getById(id);
 	}
 
 	@Override
@@ -122,7 +142,7 @@ public class ClienteService implements ClienteRepository{
 	@Override
 	public Optional<Cliente> findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return clienteRepository.findById(id);
 	}
 
 	@Override
@@ -140,6 +160,7 @@ public class ClienteService implements ClienteRepository{
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
+		clienteRepository.deleteById(id);
 		
 	}
 
@@ -151,9 +172,9 @@ public class ClienteService implements ClienteRepository{
 	}
 
 	@Override
-	public void deleteAllById(Iterable<? extends Long> ids) {
+	public void deleteAllById(Iterable<? extends Long> id) {
 		// TODO Auto-generated method stub
-		clienteRepository.deleteAllById(ids);
+		clienteRepository.deleteAllById(id);
 		
 	}
 
@@ -195,6 +216,12 @@ public class ClienteService implements ClienteRepository{
 
 	@Override
 	public <S extends Cliente, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Cliente> findAllById(Iterable<Long> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -17,7 +17,7 @@ public class Cliente {
 
 	@Id
 	@Column (name = "documento")
-	private int id;
+	private Long id;
 	private String nombre;
 	private String contraseña;
 //	@OneToMany (mappedBy = "cliente")
@@ -27,7 +27,7 @@ public class Cliente {
 		
 	}
 //	List<Tarjeta> listaTarjeta
-	public Cliente(int id, String nombre, String contraseña) {
+	public Cliente(Long id, String nombre, String contraseña) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -38,14 +38,14 @@ public class Cliente {
 
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
