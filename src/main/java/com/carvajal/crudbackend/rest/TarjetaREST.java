@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,13 +63,13 @@ import com.carvajal.crudbackend.service.TarjetaService;
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
 		}}
+		
 	
 	//Edita
 	@PutMapping ("numero/{numero}")
-	public Tarjeta update(@RequestBody Tarjeta tarjet, @PathVariable Long numero) {
-		Tarjeta tarjetaUpdate=Tarje
-	}
-	
+	public void update(@RequestBody Tarjeta tarjeta, @PathVariable("numero") Long numero) {
+		tarjetaService.delete(tarjeta);
+		tarjetaService.save(tarjeta);
+	}}
 

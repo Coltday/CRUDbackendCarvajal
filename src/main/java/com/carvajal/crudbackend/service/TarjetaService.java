@@ -2,7 +2,7 @@ package com.carvajal.crudbackend.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 import java.util.function.Function;
 
 import javax.transaction.Transactional;
@@ -134,13 +134,13 @@ public class TarjetaService implements TarjetaRepository {
 		// TODO Auto-generated method stub
 		return tarjetaRepository.findById(id);
 	}
-
+//
 //	@Override
 //	@Transactional
-//	public Tarjeta findById(Long id) {
+//	public Tarjeta find(Long id) {
 //		return tarjetaRepository.findById(id).orElse(null);
 //	}
-	
+//	
 	
 	@Override
 	public boolean existsById(Long id) {
